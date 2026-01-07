@@ -3,39 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Support Center</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Support Landing Page</title>
+  <style>
+    /* ===== Basic Page Styling ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e6f5ea; /* light green background */
+      color: #1a3d1a; /* dark green text */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header {
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #2a5d2a;
+    }
+
+    /* ===== Call-to-Action Button ===== */
+    .start-chat-btn {
+      background-color: #28a745; /* green */
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .start-chat-btn:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #2a5d2a;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .start-chat-btn {
+        width: 80%;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Hero / Landing Section -->
-  <header class="hero">
-    <div class="container">
-      <h1>Welcome to Our Support Center</h1>
-      <p>Need help? Start a live chat with our support team below.</p>
-      <button class="chat-btn" onclick="openChat()">💬 Start Chat</button>
-    </div>
+  <header>
+    <h1>Welcome to Shopify Support</h1>
+    <p>Need help? Click the button below to start a live chat with our team.</p>
   </header>
 
-  <!-- Optional Section for Info / FAQs -->
-  <section class="info">
-    <div class="container">
-      <h2>How we can help you</h2>
-      <ul>
-        <li>Account & Billing Questions</li>
-        <li>Technical Support</li>
-        <li>Product Guidance</li>
-        <li>General Inquiries</li>
-      </ul>
-    </div>
-  </section>
+  <button class="start-chat-btn" onclick="openChat()">
+    💬 Start Live Chat
+  </button>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2026 My Support Center. All rights reserved.</p>
+    © 2026 Shopify Support Center. All rights reserved.
   </footer>
 
-  <!-- Tawk.to Script (as you provided) -->
+  <!-- ===== Tawk.to Script ===== -->
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -50,6 +101,17 @@
   </script>
   <!--End of Tawk.to Script-->
 
-  <script src="script.js"></script>
+  <script>
+    // ===== Function to Open Tawk Chat =====
+    function openChat() {
+      if (typeof Tawk_API !== "undefined") {
+        Tawk_API.maximize(); // opens Tawk chat window
+      }
+    }
+
+    // Optional: auto-open after 10 seconds
+    // setTimeout(openChat, 10000);
+  </script>
+
 </body>
 </html>
