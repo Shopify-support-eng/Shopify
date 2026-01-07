@@ -3,49 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support Landing Page</title>
+  <title>My Help Center | Green Theme</title>
   <style>
-    /* ===== Basic Page Styling ===== */
+    /* ---------------- Global Styles ---------------- */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #e6f5ea; /* light green background */
+      background-color: #e6f4ea; /* light green background */
       color: #1a3d1a; /* dark green text */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       text-align: center;
-      padding: 20px;
     }
 
-    header {
-      margin-bottom: 40px;
-    }
-
-    header h1 {
+    h1 {
       font-size: 2.5rem;
-      margin: 0 0 10px;
+      margin-top: 80px;
     }
 
-    header p {
+    p {
       font-size: 1.1rem;
-      color: #2a5d2a;
+      margin: 10px 0 50px;
+      color: #225522;
     }
 
-    /* ===== Green Call-to-Action Button ===== */
+    /* ---------------- Chat Button ---------------- */
     .start-chat-btn {
-      background-color: #28a745; /* green */
+      background-color: #28a745; /* bright green */
       color: white;
       border: none;
       padding: 16px 32px;
       font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 8px;
+      border-radius: 50px;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      transition: transform 0.2s, background 0.2s;
+      transition: all 0.2s ease-in-out;
     }
 
     .start-chat-btn:hover {
@@ -53,19 +47,21 @@
       transform: scale(1.05);
     }
 
+    /* ---------------- Footer ---------------- */
     footer {
-      margin-top: 60px;
+      background-color: #1a3d1a;
+      color: #e6f4ea;
+      padding: 20px 0;
       font-size: 0.9rem;
-      color: #2a5d2a;
     }
 
-    /* Responsive */
+    /* ---------------- Optional responsiveness ---------------- */
     @media (max-width: 600px) {
-      header h1 {
+      h1 {
         font-size: 2rem;
       }
       .start-chat-btn {
-        width: 80%;
+        padding: 14px 24px;
         font-size: 1rem;
       }
     }
@@ -73,45 +69,39 @@
 </head>
 <body>
 
+  <!-- ---------------- Header ---------------- -->
   <header>
-    <h1>Welcome to Our Support</h1>
-    <p>Need help? Click the button below to start a live chat with our team.</p>
+    <h1>Welcome to Our Help Center</h1>
+    <p>Need assistance? Click the button below to chat with our support team.</p>
   </header>
 
-  <button class="start-chat-btn" onclick="openChat()">
-    💬 Start Live Chat
-  </button>
+  <!-- ---------------- Chat Button ---------------- -->
+  <main>
+    <button class="start-chat-btn" onclick="openTawkChat()">💬 Start Live Chat</button>
+  </main>
 
+  <!-- ---------------- Footer ---------------- -->
   <footer>
-    © 2026 Green Support Center. All rights reserved.
+    © 2026 My Support Center. All rights reserved.
   </footer>
 
-  <!-- ===== Tawk.to Script ===== -->
-  <!--Start of Tawk.to Script-->
+  <!-- ---------------- Tawk.to Script ---------------- -->
   <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/695e5b81d2f7301981aae420/1jec9atce';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-  <!--End of Tawk.to Script-->
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/695e5b81d2f7301981aae420/1jec9atce';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
 
-  <script>
-    // ===== Function to Open Tawk Chat =====
-    function openChat() {
+    function openTawkChat() {
       if (typeof Tawk_API !== "undefined") {
-        Tawk_API.maximize(); // opens Tawk chat window
+        Tawk_API.maximize();
       }
     }
-
-    // Optional: auto-open after 10 seconds
-    // setTimeout(openChat, 10000);
   </script>
-
 </body>
 </html>
