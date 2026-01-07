@@ -3,65 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Help Center | Green Theme</title>
+  <title>Shopify Help Center</title>
   <style>
-    /* ---------------- Global Styles ---------------- */
+    /* General Styles */
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #e6f4ea; /* light green background */
-      color: #1a3d1a; /* dark green text */
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      justify-content: space-between;
+      margin: 0;
+      padding: 0;
       text-align: center;
+      background: #eafaf1; /* light green background */
+      color: #333;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-top: 80px;
+    header {
+      margin-top: 60px;
     }
 
-    p {
-      font-size: 1.1rem;
-      margin: 10px 0 50px;
-      color: #225522;
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 16px 0 8px;
+      color: #1a6d2c; /* dark green */
     }
 
-    /* ---------------- Chat Button ---------------- */
+    header p {
+      font-size: 1rem;
+      color: #3b7d4a; /* medium green */
+      margin-bottom: 40px;
+    }
+
+    /* Shopify-style button */
     .start-chat-btn {
-      background-color: #28a745; /* bright green */
-      color: white;
+      background: #1a6d2c; /* dark green */
+      color: #fff;
       border: none;
-      padding: 16px 32px;
-      font-size: 1.2rem;
-      border-radius: 50px;
+      padding: 16px 24px;
+      font-size: 1.1rem;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      transition: all 0.2s ease-in-out;
+      box-shadow: 0 6px 18px rgba(0,0,0,.15);
+      transition: 0.2s;
     }
 
     .start-chat-btn:hover {
-      background-color: #218838;
-      transform: scale(1.05);
+      background: #14511f;
+      transform: scale(1.03);
     }
 
-    /* ---------------- Footer ---------------- */
+    /* Footer */
     footer {
-      background-color: #1a3d1a;
-      color: #e6f4ea;
+      margin-top: 80px;
       padding: 20px 0;
       font-size: 0.9rem;
+      color: #3b7d4a;
     }
 
-    /* ---------------- Optional responsiveness ---------------- */
+    /* Responsive adjustments */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
+      header h1 {
+        font-size: 1.8rem;
       }
+
+      header p {
+        font-size: 0.95rem;
+      }
+
       .start-chat-btn {
-        padding: 14px 24px;
+        padding: 14px 20px;
         font-size: 1rem;
       }
     }
@@ -69,27 +77,25 @@
 </head>
 <body>
 
-  <!-- ---------------- Header ---------------- -->
   <header>
-    <h1>Welcome to Our Help Center</h1>
-    <p>Need assistance? Click the button below to chat with our support team.</p>
+    <h1>Welcome to Shopify Help Center</h1>
+    <p>Need assistance? Click below to start a live chat with our support team.</p>
   </header>
 
-  <!-- ---------------- Chat Button ---------------- -->
   <main>
-    <button class="start-chat-btn" onclick="openTawkChat()">💬 Start Live Chat</button>
+    <button class="start-chat-btn" onclick="openChat()">💬 Start Chat</button>
   </main>
 
-  <!-- ---------------- Footer ---------------- -->
   <footer>
-    © 2026 My Support Center. All rights reserved.
+    Shopify Help Center
   </footer>
 
-  <!-- ---------------- Tawk.to Script ---------------- -->
+  <!-- Tawk.to Script -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
-      var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+      var s1=document.createElement("script"),
+          s0=document.getElementsByTagName("script")[0];
       s1.async=true;
       s1.src='https://embed.tawk.to/695e5b81d2f7301981aae420/1jec9atce';
       s1.charset='UTF-8';
@@ -97,11 +103,13 @@
       s0.parentNode.insertBefore(s1,s0);
     })();
 
-    function openTawkChat() {
+    // Function to open Tawk chat
+    function openChat() {
       if (typeof Tawk_API !== "undefined") {
         Tawk_API.maximize();
       }
     }
   </script>
+
 </body>
 </html>
