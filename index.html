@@ -15,73 +15,59 @@ body{
 
 header{
   text-align:center;
-  padding:60px 20px 40px;
+  padding:50px 20px 30px;
 }
 
 h1{
   color:#2e7d32;
-  font-size:2.5rem;
+  font-size:2.4rem;
 }
 
-.search-bar{
-  margin-top:30px;
+p.sub{
+  color:#555;
+  margin-top:8px;
 }
 
-.search-bar input{
-  padding:12px;
-  width:60%;
-  max-width:500px;
-  border-radius:30px;
-  border:1px solid #ccc;
-}
-
-.search-bar button{
-  padding:12px 20px;
-  margin-left:6px;
-  border:none;
-  border-radius:30px;
-  background:#43a047;
-  color:#fff;
-  cursor:pointer;
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px;
 }
 
 .topics{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
-  padding:40px 20px;
+  margin-bottom:30px;
 }
 
-.topic-card{
+.topic{
   background:#fff;
-  width:280px;
-  padding:24px;
+  padding:20px;
   border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.15);
-  text-decoration:none;
-  color:inherit;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  cursor:pointer;
   transition:.2s;
 }
 
-.topic-card:hover{
-  transform:translateY(-6px);
+.topic:hover{
+  transform:translateY(-5px);
 }
 
-.topic-card h3{
+.topic h3{
+  margin:0;
   color:#2e7d32;
 }
 
-section{
+.content{
   background:#fff;
-  margin:40px auto;
-  max-width:900px;
-  padding:40px 20px;
+  padding:30px;
   border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.1);
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  min-height:200px;
 }
 
-section h2{
+.content h2{
   color:#2e7d32;
 }
 
@@ -101,7 +87,7 @@ section h2{
 
 footer{
   text-align:center;
-  padding:20px;
+  padding:18px;
   background:#d0f0c0;
   color:#2e7d32;
 }
@@ -112,57 +98,49 @@ footer{
 
 <header>
   <h1>Welcome to Shopify Help Center</h1>
-  <p>Find answers or start a live chat with our support team.</p>
-
-  <div class="search-bar">
-    <input id="searchInput" placeholder="Search help topics">
-    <button onclick="searchTopics()">Search</button>
-  </div>
+  <p class="sub">Learn how to set up, manage, and grow your Shopify store.</p>
 </header>
 
-<!-- CLICKABLE TOPICS -->
-<div class="topics">
-  <a href="#account" class="topic-card">
-    <h3>Account Setup</h3>
-    <p>Create and manage your Shopify account.</p>
-  </a>
+<div class="container">
 
-  <a href="#billing" class="topic-card">
-    <h3>Billing & Payments</h3>
-    <p>Subscriptions, invoices, and payment methods.</p>
-  </a>
+  <!-- TOPIC NAVIGATION -->
+  <div class="topics">
+    <div class="topic" onclick="loadContent('account')">
+      <h3>Account setup</h3>
+      <p>Create and manage your Shopify account</p>
+    </div>
 
-  <a href="#products" class="topic-card">
-    <h3>Product Management</h3>
-    <p>Add, edit, and organize products.</p>
-  </a>
+    <div class="topic" onclick="loadContent('billing')">
+      <h3>Billing & payments</h3>
+      <p>Plans, invoices, and payment methods</p>
+    </div>
 
-  <a href="#shipping" class="topic-card">
-    <h3>Shipping & Fulfillment</h3>
-    <p>Shipping rates, delivery, and tracking.</p>
-  </a>
+    <div class="topic" onclick="loadContent('products')">
+      <h3>Products</h3>
+      <p>Add and manage products</p>
+    </div>
+
+    <div class="topic" onclick="loadContent('shipping')">
+      <h3>Shipping</h3>
+      <p>Delivery and fulfillment options</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT AREA -->
+  <div class="content" id="content">
+    <h2>Account setup</h2>
+    <p>
+      To get started with Shopify, create an account using your email address.
+      After signing up, you can set your store name, choose your business location,
+      and configure basic settings like currency and time zone.
+    </p>
+    <p>
+      Once your account is active, you can access your Shopify admin to manage
+      products, orders, and store preferences.
+    </p>
+  </div>
+
 </div>
-
-<!-- REAL CONTENT SECTIONS -->
-<section id="account">
-  <h2>Account Setup</h2>
-  <p>Learn how to create your Shopify account, verify your email, and configure basic store settings.</p>
-</section>
-
-<section id="billing">
-  <h2>Billing & Payments</h2>
-  <p>Manage your Shopify subscription, view invoices, update payment methods, and understand charges.</p>
-</section>
-
-<section id="products">
-  <h2>Product Management</h2>
-  <p>Add products, manage inventory, set pricing, and organize collections efficiently.</p>
-</section>
-
-<section id="shipping">
-  <h2>Shipping & Fulfillment</h2>
-  <p>Configure shipping zones, carrier rates, order fulfillment, and delivery tracking.</p>
-</section>
 
 <button class="start-chat-btn" onclick="openChat()">Start Live Chat</button>
 
@@ -188,13 +166,37 @@ function openChat(){
   if(Tawk_API) Tawk_API.maximize();
 }
 
-function searchTopics(){
-  const q=document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('section').forEach(sec=>{
-    if(sec.innerText.toLowerCase().includes(q)){
-      sec.scrollIntoView({behavior:'smooth'});
+function loadContent(type){
+  const c=document.getElementById('content');
+
+  const data={
+    account:{
+      title:'Account setup',
+      body:`Create your Shopify account by signing up with an email address.
+      After registration, you can configure store details such as name, address,
+      and currency. These settings help ensure your store operates correctly.`
+    },
+    billing:{
+      title:'Billing & payments',
+      body:`Shopify bills your subscription on a recurring basis.
+      You can view invoices, change plans, and manage payment methods
+      directly from your admin billing section.`
+    },
+    products:{
+      title:'Products',
+      body:`Add products to your store by entering product details,
+      pricing, images, and inventory levels. Products can be organized
+      into collections for easier browsing.`
+    },
+    shipping:{
+      title:'Shipping',
+      body:`Configure shipping zones and rates based on customer location.
+      You can offer local delivery, calculated carrier rates,
+      or custom shipping prices.`
     }
-  });
+  };
+
+  c.innerHTML=`<h2>${data[type].title}</h2><p>${data[type].body}</p>`;
 }
 </script>
 
