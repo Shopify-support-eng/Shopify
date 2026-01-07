@@ -2,42 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Help Center | Support</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Help Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f6f6f7;
+      color: #202223;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.05);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #6d7175;
+      font-size: 16px;
+    }
+
+    .section {
+      margin-bottom: 45px;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .faq {
+      border-top: 1px solid #e1e3e5;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e1e3e5;
+      padding: 15px 0;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .faq-item p {
+      margin-top: 10px;
+      color: #6d7175;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background: #008060;
+      color: #ffffff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      background: #006e52;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #c9cccf;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #8c9196;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
 
-  <header class="help-header">
-    <h1>Help Center</h1>
-    <p>Welcome! Need support? Click below to start a live chat.</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Help Center</h1>
+      <p>Get assistance, answers, and support from our team</p>
+      <a href="#" class="btn" onclick="openChat()">Start Chat</a>
+    </header>
 
-  <main class="help-main">
-    <button class="start-chat-btn" onclick="openChat()">
-      💬 Start Chat
-    </button>
-  </main>
+    <div class="section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>How do I contact support?</summary>
+          <p>You can start a live chat or send us a message using the contact form below.</p>
+        </details>
 
-  <footer class="help-footer">
-    © 2025 Support Center. All rights reserved.
-  </footer>
+        <details class="faq-item">
+          <summary>What are your support hours?</summary>
+          <p>Our support team is available Monday to Friday, 9am – 6pm.</p>
+        </details>
 
-  <!-- Tawk.to Script (KEEP IT as is, all features intact) -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),
-          s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
+        <details class="faq-item">
+          <summary>Do I need an account to get help?</summary>
+          <p>No. You can reach out to support without creating an account.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Contact Support</h2>
+      <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="5" placeholder="How can we help?" required></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <footer>
+      © 2026 Help Center. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    function openChat() {
+      alert("Live chat widget will open here.");
+    }
   </script>
-
-  <script src="script.js"></script>
 
 </body>
 </html>
