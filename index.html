@@ -6,6 +6,7 @@
 <title>Shopify Help Center</title>
 
 <style>
+/* ===== GENERAL ===== */
 body{
   margin:0;
   font-family:Arial, sans-serif;
@@ -13,27 +14,44 @@ body{
   color:#333;
 }
 
+/* ===== HEADER ===== */
 header{
   text-align:center;
   padding:50px 20px 30px;
 }
 
-h1{
+header h1{
   color:#2e7d32;
   font-size:2.4rem;
+  margin-bottom:8px;
 }
 
-p.sub{
+header p{
   color:#555;
-  margin-top:8px;
 }
 
+/* ===== CHAT BANNER ===== */
+.chat-banner{
+  background:#2e7d32;
+  color:#fff;
+  padding:14px 20px;
+  text-align:center;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.chat-banner:hover{
+  background:#256b2b;
+}
+
+/* ===== CONTAINER ===== */
 .container{
   max-width:1100px;
   margin:0 auto;
-  padding:20px;
+  padding:30px 20px;
 }
 
+/* ===== TOPICS ===== */
 .topics{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -59,18 +77,26 @@ p.sub{
   color:#2e7d32;
 }
 
+.topic p{
+  margin-top:6px;
+  font-size:.95rem;
+  color:#555;
+}
+
+/* ===== CONTENT AREA ===== */
 .content{
   background:#fff;
   padding:30px;
   border-radius:12px;
   box-shadow:0 6px 18px rgba(0,0,0,.12);
-  min-height:200px;
+  min-height:220px;
 }
 
 .content h2{
   color:#2e7d32;
 }
 
+/* ===== CHAT BUTTON ===== */
 .start-chat-btn{
   position:fixed;
   bottom:24px;
@@ -85,6 +111,11 @@ p.sub{
   z-index:9999;
 }
 
+.start-chat-btn:hover{
+  background:#388e3c;
+}
+
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   padding:18px;
@@ -96,14 +127,19 @@ footer{
 
 <body>
 
+<!-- CHAT BANNER -->
+<div class="chat-banner" onclick="openChat()">
+  💬 Need help? Chat with us
+</div>
+
 <header>
   <h1>Welcome to Shopify Help Center</h1>
-  <p class="sub">Learn how to set up, manage, and grow your Shopify store.</p>
+  <p>Learn how to set up, manage, and grow your Shopify store.</p>
 </header>
 
 <div class="container">
 
-  <!-- TOPIC NAVIGATION -->
+  <!-- NAVIGATION -->
   <div class="topics">
     <div class="topic" onclick="loadContent('account')">
       <h3>Account setup</h3>
@@ -117,7 +153,7 @@ footer{
 
     <div class="topic" onclick="loadContent('products')">
       <h3>Products</h3>
-      <p>Add and manage products</p>
+      <p>Add and manage your products</p>
     </div>
 
     <div class="topic" onclick="loadContent('shipping')">
@@ -126,17 +162,18 @@ footer{
     </div>
   </div>
 
-  <!-- MAIN CONTENT AREA -->
+  <!-- MAIN CONTENT -->
   <div class="content" id="content">
     <h2>Account setup</h2>
     <p>
-      To get started with Shopify, create an account using your email address.
-      After signing up, you can set your store name, choose your business location,
-      and configure basic settings like currency and time zone.
+      Create your Shopify account using your email address.
+      After signing up, you can set your store name, business details,
+      currency, and time zone. These settings help your store operate
+      correctly from the start.
     </p>
     <p>
-      Once your account is active, you can access your Shopify admin to manage
-      products, orders, and store preferences.
+      Once your account is ready, you can access the Shopify admin
+      to manage products, orders, and store settings.
     </p>
   </div>
 
@@ -148,7 +185,7 @@ footer{
   Shopify Help Center © 2026
 </footer>
 
-<!-- TAWK -->
+<!-- ===== TAWK SCRIPT (UNCHANGED) ===== -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -163,40 +200,42 @@ s0.parentNode.insertBefore(s1,s0);
 
 <script>
 function openChat(){
-  if(Tawk_API) Tawk_API.maximize();
+  if(typeof Tawk_API!=="undefined"){
+    Tawk_API.maximize();
+  }
 }
 
 function loadContent(type){
-  const c=document.getElementById('content');
+  const content=document.getElementById("content");
 
   const data={
     account:{
-      title:'Account setup',
-      body:`Create your Shopify account by signing up with an email address.
-      After registration, you can configure store details such as name, address,
-      and currency. These settings help ensure your store operates correctly.`
+      title:"Account setup",
+      text:`Create your Shopify account using your email address.
+      After registration, configure your store name, address, currency,
+      and basic preferences.`
     },
     billing:{
-      title:'Billing & payments',
-      body:`Shopify bills your subscription on a recurring basis.
-      You can view invoices, change plans, and manage payment methods
-      directly from your admin billing section.`
+      title:"Billing & payments",
+      text:`Manage your Shopify subscription, view invoices,
+      change plans, and update your payment methods
+      directly from your admin dashboard.`
     },
     products:{
-      title:'Products',
-      body:`Add products to your store by entering product details,
-      pricing, images, and inventory levels. Products can be organized
-      into collections for easier browsing.`
+      title:"Products",
+      text:`Add products by entering product details,
+      pricing, images, and inventory levels.
+      Products can be organized into collections.`
     },
     shipping:{
-      title:'Shipping',
-      body:`Configure shipping zones and rates based on customer location.
-      You can offer local delivery, calculated carrier rates,
-      or custom shipping prices.`
+      title:"Shipping",
+      text:`Set up shipping zones, delivery rates,
+      and fulfillment options to ensure customers
+      receive their orders on time.`
     }
   };
 
-  c.innerHTML=`<h2>${data[type].title}</h2><p>${data[type].body}</p>`;
+  content.innerHTML=`<h2>${data[type].title}</h2><p>${data[type].text}</p>`;
 }
 </script>
 
